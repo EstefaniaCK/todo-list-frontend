@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.scss'
-import TodoForm from './components/TodoForm/TodoForm'
+import TodoList from './components/TodoList/TodoList'
 
 function App() {
   return (
     <div className='todo__container'>
-      <TodoForm/>
+      <TodoList />
     </div>
   )
 }
