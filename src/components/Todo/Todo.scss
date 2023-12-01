@@ -3,10 +3,8 @@
     gap: 2rem;
     border-bottom: 2px solid purple;
     margin-top: 1rem;
-    width: 50vw;
     object-fit: contain;
-
-
+    justify-content: center;
 
     &__item {
         display: flex;
