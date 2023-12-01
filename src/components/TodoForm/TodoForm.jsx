@@ -8,10 +8,17 @@ const TodoForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        props.onSubmit({
-            id: Math.random(),
-            text: input
-        })
+        if (props.editMode) {
+            props.onSubmit({
+                id: props.edit.id,
+                text: input,
+            });
+        } else {
+            props.onSubmit({
+                id: Math.random(),
+                text: input
+            })
+        }
 
         setInput('');
     };
@@ -30,7 +37,9 @@ const TodoForm = (props) => {
                 name="text"
                 onChange={handleChange}
             />
-            <button className='form__button' type="submit">Add</button>
+            <button className='form__button' type="submit">
+                {props.editMode ? 'Edit' : 'Add'}
+            </button>
         </form>
     );
 };

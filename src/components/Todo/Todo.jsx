@@ -2,31 +2,33 @@ import React, { useState } from 'react';
 import TodoForm from '../TodoForm/TodoForm';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
-import "./Todo.scss";
+import './Todo.scss';
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     const [edit, setEdit] = useState({
         id: null,
         value: ''
     })
+
     const submitUpdate = value => {
         updateTodo(edit.id, value)
         setEdit({
             id: null,
             value: ''
-        })
-    }
+        });
+    };
 
     if (edit.id) {
-        return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+        return <TodoForm edit={edit} onSubmit={submitUpdate} editMode={true}/>;
     }
 
     return todos.map((todo, index) => (
-        <div className={todo.isComplete ? 'todo__item complete' : 'todo__item'} key={index}>
-            <div className='todo__item-info'key={todo.id} onClick={() => completeTodo(todo.id)}>
-                {todo.text}
-                <div className='todo__item-date'>Date Added: {todo.dateAdded}</div>
-                <div className='todo__item-status'>Status: {todo.status}</div>
+        <div className='todo' key={index}>
+            <div className='todo__item'
+                key={todo.id} onClick={() => completeTodo(todo.id)}>
+                <span className='todo__item-description'>Description:<p className='todo__item-description'>{todo.text}</p></span>
+                <span className='todo__item-date'>Date: <p>{todo.dateAdded}</p></span>
+                <span className='todo__item-status'>Status: <p>{todo.status}</p></span>
             </div>
             <div className='todo__item-icons'>
                 <RiCloseCircleLine

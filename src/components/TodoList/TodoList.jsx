@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoForm from '../TodoForm/TodoForm';
 import Todo from '../Todo/Todo';
 import './TodoList.scss';
@@ -40,11 +40,14 @@ const TodoList = () => {
 
     const updateTodo = (todoId, newValue) => {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
-            return
+            return;
         }
-        setTodos((prev) => prev.map((item) => (item.id === todoId ? newValue : item)))
+        setTodos((prev) =>
+            prev.map((item) =>
+                item.id === todoId ? { ...newValue, dateAdded: item.dateAdded, status: item.status } : item
+            ));
 
-    }
+    };
 
     return (
         <div className='list'>

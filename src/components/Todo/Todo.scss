@@ -1,5 +1,37 @@
-.todo__item {
+.todo {
     display: flex;
-    flex-direction: row;
-   
+    gap: 2rem;
+    border-bottom: 2px solid purple;
+    margin-top: 1rem;
+    width: 50vw;
+    object-fit: contain;
+
+
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+
+        &-description {
+            width: 10rem;
+            word-wrap: break-word;
+        }
+
+        &-status,
+        &-date {
+            width: 5rem;
+        }
+
+        &-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 5rem;
+        }
+    }
+
+
 }
