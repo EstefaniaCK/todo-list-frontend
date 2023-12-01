@@ -1,8 +1,27 @@
-# React + Vite
+# Todo List by Estefania 
+This front-end application is an application where the client can create a todo list. It allows users to add, remove and edit the todo list. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installation
 
-Currently, two official plugins are available:
+Clone the repository from github using the following commands: 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+  git clone https://github.com/EstefaniaCK/todo-list-frontend.git
+  
+```
+Navigate to the project directory:
+
+```bash
+  cd todo-list-frontend
+```
+Install the dependencies:
+
+```bash
+ npm install
+```
+Run the development server:
+
+```bash
+npm run dev
+```
+Open your browser with the url given in terminal after the server was runned.
