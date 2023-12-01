@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    &__input {
+        border-radius: 1rem;
+    }
+
+    &__button {
+        border-radius: 1rem;
+        background-color: blueviolet;
+        color: white;
+    }
+}

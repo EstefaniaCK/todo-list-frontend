@@ -5,19 +5,27 @@ import Todo from '../Todo/Todo';
 const TodoList = () => {
 
     const [todos, setTodos] = useState([]);
+
     const addTodo = (todo) => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
             return
         }
-        const newTodos = [todo, ...todos]
+        const newTodo = {
+            ...todo,
+            id: new Date().getTime(),
+            dateAdded: new Date().toLocaleDateString(),
+            status: 'pending',
+        };
 
-        setTodos(newTodos)
+        const newTodos = [newTodo, ...todos]
+
+        setTodos(newTodos);
     };
 
     const completeTodo = (id) => {
         let updatedTodos = todos.map((todo) => {
             if (todo.id === id) {
-                todo.isComplete = !todo.isComplete
+                todo.status = todo.status === 'pending' ? 'completed' : 'pending';
             }
             return todo;
         })

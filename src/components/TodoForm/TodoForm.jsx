@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './TodoForm.scss';
+
 
 const TodoForm = (props) => {
     const [input, setInput] = useState('')
