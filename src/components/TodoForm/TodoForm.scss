@@ -5,11 +5,14 @@
 
     &__input {
         border-radius: 1rem;
+        width: 80%;
+        height: 1.5rem;
     }
 
     &__button {
         border-radius: 1rem;
         background-color: blueviolet;
         color: white;
+        width: 4rem;
     }
 }
