@@ -5,15 +5,14 @@ import './TodoList.scss';
 
 const TodoList = () => {
 
+    const [todos, setTodos] = useState([]);
+
     useEffect(() => {
         const todolist = localStorage.getItem("todos")
         if (todolist) {
             setTodos(JSON.parse(todolist))
         }
     }, []);
-
-
-    const [todos, setTodos] = useState([]);
 
     const addTodo = (todo) => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
