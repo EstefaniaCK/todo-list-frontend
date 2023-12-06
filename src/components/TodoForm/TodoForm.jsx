@@ -3,18 +3,19 @@ import './TodoForm.scss';
 
 
 const TodoForm = (props) => {
+    const { edit, onSubmit, editMode, placeholder } = props
     const [input, setInput] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (props.editMode) {
-            props.onSubmit({
-                id: props.edit.id,
+        if (editMode) {
+            onSubmit({
+                id: edit.id,
                 text: input,
             });
         } else {
-            props.onSubmit({
+            onSubmit({
                 id: Math.random(),
                 text: input
             })
@@ -32,13 +33,13 @@ const TodoForm = (props) => {
             <input
                 className='form__input'
                 type="text"
-                placeholder='Add your task'
+                placeholder={placeholder}
                 value={input}
                 name="text"
                 onChange={handleChange}
             />
             <button className='form__button' type="submit">
-                {props.editMode ? 'Edit' : 'Add'}
+                {editMode ? 'Edit' : 'Add'}
             </button>
         </form>
     );

@@ -16,10 +16,11 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
             id: null,
             value: ''
         });
+
     };
 
     if (edit.id) {
-        return <TodoForm edit={edit} onSubmit={submitUpdate} editMode={true}/>;
+        return <TodoForm edit={edit} onSubmit={submitUpdate} editMode={true} placeholder={"Edit your task"} />;
     }
 
     return todos.map((todo, index) => (

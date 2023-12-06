@@ -5,6 +5,14 @@ import './TodoList.scss';
 
 const TodoList = () => {
 
+    useEffect(() => {
+        const todolist = localStorage.getItem("todos")
+        if (todolist) {
+            setTodos(JSON.parse(todolist))
+        }
+    }, []);
+
+
     const [todos, setTodos] = useState([]);
 
     const addTodo = (todo) => {
@@ -19,7 +27,7 @@ const TodoList = () => {
         };
 
         const newTodos = [newTodo, ...todos]
-
+        localStorage.setItem('todos', JSON.stringify(newTodos))
         setTodos(newTodos);
     };
 
@@ -31,28 +39,36 @@ const TodoList = () => {
             return todo;
         })
         setTodos(updatedTodos);
+        localStorage.setItem("todos", JSON.stringify(updatedTodos))
     }
 
     const removeTodo = (id) => {
         const removeArr = [...todos].filter((todo) => todo.id !== id)
         setTodos(removeArr);
+        localStorage.setItem("todos", JSON.stringify(removeArr))
     }
 
     const updateTodo = (todoId, newValue) => {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return;
         }
-        setTodos((prev) =>
-            prev.map((item) =>
-                item.id === todoId ? { ...newValue, dateAdded: item.dateAdded, status: item.status } : item
-            ));
+        setTodos((prev) => {
+            const updatedTodos = prev.map((item) =>
+                item.id === todoId ? { ...item, ...newValue } : item
+            );
+
+            localStorage.setItem('todos', JSON.stringify(updatedTodos));
+
+            return updatedTodos;
+        });
+
 
     };
 
     return (
         <div className='list'>
             <h1 className='list__heading'>TODO LIST</h1>
-            <TodoForm onSubmit={addTodo} />
+            <TodoForm onSubmit={addTodo} placeholder={"Add your task"} />
             <Todo
                 todos={todos}
                 completeTodo={completeTodo}
